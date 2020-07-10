@@ -1,41 +1,13 @@
-import './styles.css';
-import template from './teamplate'
-import {Theme} from './theme'
+import './css/styles.css';
+import { switchFn } from './components/switcher';
+import './components/switcher';
+import './cart/cart';
+import 'basiclightbox/dist/basicLightbox.min.css';
+import './menu/menu';
 
-const switchTheme = document.querySelector(".js-switch-input")
+export const bodyRef = document.querySelector('body');
+export const switchRef = document.querySelector('.js-switch-input');
 
-const bodyClass = document.querySelector('body')
+bodyRef.classList.add('light-theme');
 
-
-  function stopSwitch () {
-    const savedTheme = localStorage.getItem("theme")
-if (savedTheme === Theme.DARK) {
-    bodyClass.classList.add(savedTheme);
-    switchTheme.checked = true;
-}
-  }
-  stopSwitch ()
-
-
-switchTheme.addEventListener("change", toggleSwith)
-
-function toggleSwith (e) {
-if (e.target.checked === false) {
-    bodyClass.classList.remove(Theme.DARK)
-    bodyClass.classList.add(Theme.LIGHT)
-    localStorage.setItem('theme', Theme.LIGHT)
-} else {
-    bodyClass.classList.remove(Theme.LIGHT)
-    bodyClass.classList.add(Theme.DARK)
-    localStorage.setItem('theme', Theme.DARK)
-}
-
-}
-
-
-
-
-
-
-
-  
+switchRef.addEventListener('change', switchFn);
